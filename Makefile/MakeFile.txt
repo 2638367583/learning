@@ -1,0 +1,66 @@
+ROOTDIR ?= ../..
+
+MOD	?= CGI
+TARGET ?= wanacc.cgi
+
+include $(ROOTDIR)/make.rules
+include $(ROOTDIR)/make.dep
+
+OBJECTS += $(ROOTDIR)/../ac1.95/shared/lib/jsoncpp.o \
+	$(ROOTDIR)/apps/auth/domain_conf.o
+
+INCFLAGS += -I. -I../libcgibase \
+	-I$(SHAREINC)/libenc -I$(SHAREINC)/libgwmode \
+	-I$(ROOTDIR)/apps/waccd/libweb -I$(ROOTDIR)/apps/waccd/libwaccd \
+	-I$(SHAREINC)/libsslc -I$(SODIR)/wacccrt -I$(SHAREINC)/str_safe \
+	-I$(ROOTDIR)/apps/auth -I$(SHAREINC)/get_license_id \
+	-I$(SHAREINC)/wanacc_vm_license -I$(SHAREINC)/woc_encrypt \
+	-I$(ROOTDIR)/modules/reconn/lib -I$(ROOTDIR)/modules/eoip/drv \
+	-I$(ROOTDIR)/libs/tinyxml -I$(ROOTDIR)/../ac1.95/shared/inc \
+	-I$(SHAREINC)/stdzbc -I$(SHAREINC)/krt -I$(SHAREINC)/wbase \
+	-I$(OPENSSL_INCLUDE)\
+    -I$(ROOTDIR)/../include/bbcbase\
+    -I$(SHAREINC)/bbc_syslog
+
+LDFLAGS += -lzbc -lcgibase -lweb -lwnetacc -lwbase -lpthread -lwaccd -ldl \
+	-lsslc $(HAVE_SSL_LIB) -lreconn -lwoc_encrypt -ltinyxml -lstrsafe -lz \
+	-lcgi_right_common -lget_gateway_id -llogc -lkrt -lvmlicense \
+	-lgetlicenseid -liconv -lgetsn -lbbcbase \
+    -L$(ROOTDIR)/packet64/app/usr/bin/bbc/usr/lib/ -lprotobuf \
+    -lbbc_syslog
+
+all: $(TARGET)
+	cp -f $(TARGET) $(OUTDIR)/$(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+	[ "$(ISSTRIP)" == "n" ] || ( cp -f $@ $@.g && $(STRIP) $@ )
+
+clean:
+	-rm -f *.bak *.map buildcppscan.sh *.bdf
+	-rm -f $(OBJECTS) 
+	-rm -f $(TARGET) $(TARGET).g
+	-rm -rf ./so_o cpptest_report_$(TARGET)
+
+.PHONY: clean all
+
+cppscan: clean
+ifeq ($(shell id -u), 0)
+	-mkdir -p cpptest_report_$(TARGET)
+	cpptesttrace --cpptesttraceOutputFile=$(TARGET).bdf \
+		--cpptesttraceProjectName=$(TARGET) make all
+	cpptestcli -data $(CTWOKSPACE) -bdf $(TARGET).bdf -resource $(TARGET) \
+		-config user://mustfix -report cpptest_report_$(TARGET) || echo
+	cppcheck $(INCFLAGS) ./ --xml 2>cpptest_report_$(TARGET)/cppcheck.xml
+else
+	$(error "must be root to run cpptest")
+endif
+
+cpptest:
+ifeq ($(shell id -u), 0)
+	rm -fv buildcppscan.sh
+	ln -s $(ROOTDIR)/../scripts/buildcppscan.sh buildcppscan.sh
+	./buildcppscan.sh
+else
+	$(error "must be root to run cpptest")
+endif

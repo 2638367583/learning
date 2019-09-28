@@ -1,0 +1,31 @@
+#==========================================================================================
+#	OBJECTS DEPENDENCE
+#==========================================================================================
+SOURCES = $(wildcard *.c *.cpp)
+OBJECTS = $(patsubst %.c, %.o, $(patsubst %.cpp, %.o, $(SOURCES)))
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
+
+%.cpp: %.h
+
+.cpp.o:
+	$(CXX) $(CXXFLAGS) $(INCFLAGS) -c -o $@ $<
+
+./so_o/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(INCFLAGS) $(SOFLAGS) -c -o $@ $<
+
+./lib_o/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(INCFLAGS) -c -o $@ $<
+
+./log_o/%.log: %.cpp
+	$(MKLOG) $< $@
+	
+./so_o: 
+	-mkdir -p ./so_o
+
+./lib_o:
+	-mkdir -p ./lib_o
+
+./log_o:
+	-mkdir -p ./log_o

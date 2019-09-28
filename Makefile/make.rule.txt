@@ -1,0 +1,147 @@
+################################################################################
+#  版本的定义。
+################################################################################
+##
+MAJORV ?= 9
+MINORV ?= 5
+SUBVER ?= 6
+# R版本的标签 ，如果为空，那么该包不是R版本包 #
+RVERSION ?= R1
+export RVERSION
+
+################################################################################
+#  编译选项
+################################################################################
+## BETA 、 ISSTRIP 、 CFG 、 DOWNCHK 、 
+## 
+# BETA标记。1：beta包 | 其他：正式包
+BETA ?= 1
+export BETA
+
+# 是否要strip。y：yes | n：no
+ISSTRIP ?= y
+export ISSTRIP
+
+# 识别库下载配置。y：下载 | n：不下载。注意：设置为y要求编译环境能上网
+DOWNCHK ?= y
+export DOWNCHK
+
+# 版本标记。RELEASE版本 | DEBUG版本
+CFG ?= RELEASE
+export CFG
+
+## 是否打出覆盖率的升级包
+## 
+# 开启覆盖率分析选项 #
+GCOV ?= n
+export GCOV
+
+
+## 是否打开core开关
+##
+# 
+COREDUMP ?= n
+export COREDUMP
+
+## 内核版本，及内核代码所在的父路径
+## 内核代码的路径：/usr/src/3.4.x_for_9.5.3
+## 内核模块的安装路径: /lib/modules (默认不能修改)
+KVER ?= 3.4.x_for_9.x.x
+KERPATH ?= /usr/src
+MODPATH ?= /lib/modules
+
+################################################################################
+############### 以上为可配置项，以下为内部自动处理，修改请谨慎！################
+################################################################################
+# chs版本 | en版本 ， 必须在打包时外部参数输入
+MYLANG ?= chs
+export MYLANG
+
+
+# 根目录路径，由makefile设置。如果未设置，取当前目录
+ROOTDIR ?= .
+
+# 产品版本号
+VER ?= $(MAJORV).$(MINORV).$(SUBVER)
+export VER
+
+# 内部升级包标记号，即svn revision号；获取方式有3种：
+# 1、如果make命令有指定则用指定IVER。此种方式由jenkins负责；makefile产生.revision文件
+# 2、如果make命令未指定且当前目录有.revision文件，则取.revision内容
+# 3、如果首次make未设置IVER且当前目录没有.revision，取用户id，主makefile提示 make config IVER=12345
+IVER ?= $(shell if [ -f $(ROOTDIR)/.revision ]; then cat $(ROOTDIR)/.revision; else id -u; fi)
+export IVER
+
+# 完整的版本号
+CURVER ?= $(VER).$(IVER)
+
+# make命令
+MAKE ?= -make
+
+# 平台设置，当前只支持 i386、x86_64（2013.08）
+ARCH ?= $(shell uname -i)
+export ARCH
+
+# packet目录，需要export外部脚本使用
+PACKET ?= packet
+ifeq ($(ARCH), x86_64)
+	PACKET = packet64
+endif
+export PACKET
+
+# packet目录，需要export外部脚本使用
+PACKET_SIM ?= packet_sim
+ifeq ($(ARCH), x86_64)
+	PACKET_SIM = packet64_sim
+endif
+export PACKET_SIM
+
+# lib目录，
+LIBDIR ?= lib
+ifeq ($(ARCH), x86_64)
+	LIBDIR = lib64
+endif
+
+#是否进行严格检查，默认不进行#
+CHECK_STRICT ?= no
+
+# 根据cpu个数+1生成线程参数
+#MKFLAG = -j$(shell expr `cat /proc/cpuinfo | grep vendor_id | wc -l` + 1)
+
+# TODO: beta设置方式
+ifeq ($(BETA), 1)
+	BETA_FLAG = B
+	BETA_STRING = beta
+endif
+
+# ssu包命名用的FLAG
+ifeq ($(MYLANG), chs)
+	LANG_FLAG = CN
+else
+	LANG_FLAG = EN
+endif
+
+# RELEASE 版本做js混淆,暂时支持手动混淆
+ifeq ($(CFG), RELEASE)
+	CONFUSION = N
+else
+	CONFUSION = N
+endif
+
+
+# cpptest 扫描时的工作目录，需编译环境安装好cpptest
+CTWOKSPACE ?= /home/cpptest/workspace
+
+# 内核相关定义
+KLIB=$(MODPATH)/$(KVER)
+KERNELSRC=$(KERPATH)/linux-$(KVER)
+KERNELHDR=$(KERPATH)/linux-$(KVER)/include
+KHDR=$(KERNELHDR)
+KSRC=$(KERNELSRC)
+
+# svn上内核代码账号，用于更新内核.version
+SVN_CMD ?= svn --username kernel --password secret --no-auth-cache --quiet
+
+# clean dir target，清理以下目录里面的svn non-versioned的文件
+SVNCLEANDIRS ?= ./scripts ./misc ./$(PACKET) ./wanacc/$(PACKET) \
+	./ac1.95/$(PACKET) ./dc/virus
