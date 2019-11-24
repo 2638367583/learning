@@ -27,3 +27,6 @@ RUN cd $WORKDIR/mysql-5.6.46 \
 	&& maek \
 	&& make install
 
+RUN apt-get install -y inetutils-ping vim strace
+# kernel moudle工具
+RUN apt-get install -y kmod
