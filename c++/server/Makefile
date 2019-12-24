@@ -60,7 +60,6 @@ clean: $(myclean)
 	-rm -f $(ASMFILE:.s=.o)
 	-rm -f $(TARGET) $(TARGET).gcovinfo
 	-rm -f $(CFILE:.c=.gcno) $(CFILE:.c=.gcda) $(CFILE:.c=.c.gcov)
-	if [ -f $(TARGET).rc ];then rm -rf $(TARGET).rc;fi
 
 install: $(myinstall)
 	if [ ! -d $(INSTALL_TARGET_DIR) ];then mkdir -p $(INSTALL_TARGET_DIR);fi

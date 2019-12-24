@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 描述进程的类
+ * @Author: lly
+ * @Date: 2019-12-15 16:30:10
+ * @LastEditors  : lly
+ * @LastEditTime : 2019-12-24 23:04:07
+ */
 #ifndef __PROCESS_H__
 #define __PROCESS_H__
 

@@ -1,13 +1,16 @@
+/*
+ * @Descripttion: cgi执行类
+ * @Author: lly
+ * @Date: 2019-12-20 00:54:10
+ * @LastEditors  : lly
+ * @LastEditTime : 2019-12-24 23:12:08
+ */
 #ifndef __CgiConn_H__
 #define __CgiConn_H__
-#include <netinet/in.h>
-#include <stdio.h>
-#include "processpool.h"
 
+#include <netinet/in.h>
 class CgiConn
 {
-private:
-    /* data */
 public:
     CgiConn(/* args */);
     ~CgiConn();
@@ -22,6 +25,5 @@ private:
     char m_buf[BUFF_SIZE];
     int m_read_idx;
 };
-
 
 #endif
