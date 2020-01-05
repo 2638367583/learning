@@ -14,7 +14,7 @@ INCLUDES += -I.
 CPPFLAGS += -g -Wall -std=c++0x -Werror -fstack-protector-all -Wsign-compare
 CFLAGS += -g -Wall -Werror -Wshadow -fstack-protector-all -Wsign-compare
 
-LIBS += 
+LIBS +=  -lpthread
 
 ifeq ($(TYPE),so)
 # so TARGET: libbase.so.1.2.345

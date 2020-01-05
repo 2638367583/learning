@@ -1,6 +1,14 @@
+/*
+ * @Descripttion: 
+ * @Author: lly
+ * @Date: 2019-12-20 00:03:22
+ * @LastEditors  : lly
+ * @LastEditTime : 2020-01-06 00:18:22
+ */
 #include <strings.h>
 
 #include "processpool.h"
+#include "threadpool.h"
 #include "cgi_conn.h"
 
 char ip[] = "0.0.0.0";
@@ -28,6 +36,11 @@ int main(int argc, char *argv[])
     //开启进程池处理
     Processpool<CgiConn> *pool = Processpool<CgiConn>::create(listenfd, 8);
     pool->run();
+
+    //开启线程池处理
+    //ThreadPool<CgiConn> *pool = new ThreadPool<CgiConn>(16);
+    //pool->append(new CgiConn);
+    //while(true);
 
     return 0;
 }
