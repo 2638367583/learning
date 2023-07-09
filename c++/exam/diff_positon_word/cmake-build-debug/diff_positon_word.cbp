@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="diff_positon_word"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="diff_positon_word">
+				<Option output="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/diff_positon_word" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 diff_positon_word"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="diff_positon_word/fast">
+				<Option output="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/diff_positon_word" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 diff_positon_word/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/main.cpp">
+			<Option target="diff_positon_word"/>
+		</Unit>
+		<Unit filename="/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

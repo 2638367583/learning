@@ -1,0 +1,3 @@
+/Users/lileiyu/Documents/code/learning/c++/exam/tc_exam/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/lileiyu/Documents/code/learning/c++/exam/tc_exam/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lileiyu/Documents/code/learning/c++/exam/tc_exam/cmake-build-debug/CMakeFiles/tc_exam.dir

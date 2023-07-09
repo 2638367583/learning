@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/lileiyu/Documents/code/learning/c++/exam/diff_positon_word/main.cpp
+iostream
+-
+vector
+-
+exception
+-
+
